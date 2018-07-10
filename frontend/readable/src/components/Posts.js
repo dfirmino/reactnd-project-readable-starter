@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
+import moment from 'moment';
 import { incrementVotePost, decrementVotePost } from '../actions/index'
 import * as Api from "../utils/Api"
 class Posts extends Component {
@@ -38,7 +39,7 @@ class Posts extends Component {
                         <div className="col-md-10 post-detail">
                             <span className="post-author"> Enviador por: <b> {post.author} </b> </span>
                             <span className="post-comment"> Cometários: <b> {post.commentCount} </b> </span>
-                            <span className="post-data"> Enviado em: <b> {post.timestamp} </b> </span>
+                            <span className="post-data"> Enviado em: <b> {moment(post.timestamp, "YYYYMMDD").fromNow()} </b> </span>
                             <span className="post-category"> <b> {post.category} </b> </span>
                         </div>
                         </div>
