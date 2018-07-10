@@ -1,0 +1,228 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  letter-spacing: 2px;
+  word-spacing: 3px;
+  box-sizing: border-box;
+  font-size: 15px;
+  background: white;
+  overflow: hidden;
+}
+
+h4 {
+  text-align: center;
+  padding-top: 23px;
+}
+
+.cl-left{ padding-left: 0; margin-left: 0}
+.title {
+  background: rgb(43, 43, 104);
+  color:white;
+  height: 8vh;
+  line-height: 8vh;
+  width: 101.3%;
+}
+
+.title-name {
+  font-size: 180%;
+  font-weight: 400;
+  text-transform: capitalize;
+  position: relative;
+}
+
+.title a, .title a:hover{ color: white;text-decoration: none;} 
+.title-name::after {
+  content:'';
+  width: 50%;
+  height: 2px;
+  border-bottom: 2px solid white;
+  position: absolute;
+  bottom: -1%;
+  left: 50%;
+  transform: translate(-50%,0)
+}
+
+.col-categories {
+  padding-right: unset;
+  padding-left: unset;
+}
+
+.list-categories {
+  list-style: none;
+  background: #2b2b68de;
+  height: 90vh;
+  padding-top:30px;
+}
+
+.list-categories li {
+  display: block;
+  margin-bottom: 30px;
+  color:white;
+  text-transform: capitalize;
+  border-bottom: 1px solid #46467c; 
+  transition: all 1s;
+  position: relative;
+  cursor: pointer;
+}
+
+.list-categories li:hover::before {
+  content: '~';
+  position: relative;
+  display: inline;
+  font-weight: bold;
+}
+
+.list-categories li:hover {
+  padding-left: 10px;
+}
+.posts-container { 
+  overflow-y: auto;
+  max-height: 83vh;
+  overflow-x: hidden;
+}
+.posts-container .row {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.post {
+  margin-top: 20px;  
+}
+
+.post-score {
+  text-align: center;
+  font-size: 150%;
+  font-weight: 400;
+}
+.post-score .icon-vote {
+  display: block;
+  font-size: 100%;
+  cursor: pointer;
+}
+
+.post-title {
+  text-align: center;
+  font-weight: 600;
+  color: cornflowerblue;
+}
+
+.new-post {
+  float: right;
+  position: relative;
+  right: 30px;
+  cursor: pointer;
+}
+
+.filter {
+  margin-top: 10px;
+}
+
+.filter select {
+  width: 20%;
+  display: inline-block;
+}
+
+.detailPost {
+  line-height:20px;
+  text-align: center;
+  width: 100%;
+}
+
+.detailPost span {
+  color: cornflowerblue;
+  font-weight: 600;
+  display: block;
+} 
+.row-new-comments textarea {
+  resize: none;
+}
+.row-comments {
+  max-height: 20vh;
+  overflow-y: auto;
+}
+.comment-container {
+  border: 1px solid cornflowerblue;
+  margin-top:10px;
+  padding:10px;
+}
+.comment-author {
+  color: cornflowerblue;
+}
+.comment-date {
+  font-size: 80%;
+  color: rgb(27, 63, 129)
+}
+.comment-score {
+  text-align: center;
+   border-left: 1px solid cornflowerblue;
+}
+
+.comment-score span {
+  display: block;
+  font-size: 130%;
+  cursor: pointer;
+}
+.comment-score small {
+  line-height: 30px;
+}
+.comment-score span:hover,
+.editPost span:hover {
+  color: cornflowerblue;
+  text-decoration: none;
+}
+a,
+a:hover {
+  text-decoration: none;
+}
+.btn-send {
+  padding:8px;
+  background: cornflowerblue;
+  color: white;
+  border-radius: 10px;
+  float: right;
+  margin-top:4px;
+}
+.btn-send:hover {
+  background: #2b2b68;
+  color:white;
+}
+
+.editPost {
+  position: relative;
+  left: 80%;
+}
+
+.editPost span {
+  font-size: 120%;
+  cursor: pointer;
+}
+
+.tag {
+  padding:8px;
+  background: cornflowerblue;
+  color: white;
+  position: relative;
+  top: 15px;
+}
+
+.editComment span {
+  font-size: 120%;
+  color: #337ab7;
+  cursor: pointer;
+}
+.editComment span:hover {
+  color: cornflowerblue;
+}
+
+.editPost .glyphicon-remove-circle,
+.editComment .glyphicon-remove-circle {
+  position: relative;
+  top:2px;
+  margin-left: 10px;
+}
+
+.editPost .glyphicon-remove-circle {
+  color: #337ab7;
+}
