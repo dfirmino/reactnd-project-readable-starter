@@ -1,22 +1,46 @@
-# Readable API Server
+![React](https://logos-download.com/wp-content/uploads/2016/09/React_logo_small.png "React")
+# Redable Project
 
-This is the starter project for the final assessment project for Udacity's Redux course where you will build a content and comment web app. Users will be able to post content to predefined categories, comment on their posts and other users' posts, and vote on posts and comments. Users will also be able to edit and delete posts and comments.
+  Desenvolvido para o projeto nanodegree de formação em React Realizado Pela [Udacity](https://br.udacity.com/course/react-nanodegree--nd019) 
 
-This repository includes the code for the backend API Server that you'll use to develop and interact with the front-end portion of the project.
+## Instalação do Projeto
 
-## Start Developing
 
-To get started developing right away:
+* Entre no Diretório 'api-server'
+* Instale as Dependências `npm install`
+* Rode o Servidor  `node server`
+* Entre no Diretório 'frontend'
+* Instale as Dependências `npm install`
+* Rode o Servidor  `npm start`
 
-* Install and start the API server
-    - `cd api-server`
-    - `npm install`
-    - `node server`
-* In another terminal window, use Create React App to scaffold out the front-end
-    - `create-react-app frontend`
-    - `cd frontend`
-    - `npm start`
-
-## API Server
-
-Information about the API server and how to use it can be found in its [README file](api-server/README.md).
+## O Que Vou Encontrar 
+```bash
+├── api-server # Backend Fornecido pela Udacity
+├── package.json # npm package manager file.
+├── frontend # FrontEnd do Projeto
+└── public
+│   ├── favicon.ico # React Icone, você pode mudar caso desejar.
+│   └── index.html # Não Modifique
+├── actions #Actions
+│    └── index.js #Arquivo com todas as Actions
+├── components
+│   ├── App.js # Raiz do App (Contém as Rotas).
+│   ├── Categories.js # Componente Semelhante a Home Filtrado por Categorias.
+│   ├── Comment.js #Componente Responsável Por Renderizar um Comentário.
+│   ├── CreatePost.js # Componente Para Criação de Post.
+│   ├── DetailPost.js # Componente Para Detalhe de Post.  
+│   ├── EditPost.js # Componente Para Edição de Post.
+│   ├── Filter.js # Componente Responsável Pelo Filtro do Post.
+│   ├── Header.js # Cabeçalho
+│   ├── Home.js # Componente da Página Inicial "/".
+│   ├── Nav.js # Navegação por Categorias.
+│   └── Posts.js # Componente Responsável Pela Exibição dos Posts.
+├── reducers # Reducers
+│   └── index.js #Arquivo com todos os Reducers
+├── utils # Arquivos Úteis para o desenvolvimento.
+│   └── Api.js # Arquivo Com métodos da Api necessários para o sistema.
+├── App.css # Todo Css do Sistema.
+├── App.test.js # Arquivo para Teste.
+├── index.js  # Arquivo utilizado para a renderização DOM.
+└── Logo.svg  # Logo do React.
+```
