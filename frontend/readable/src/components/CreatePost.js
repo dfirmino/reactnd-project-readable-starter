@@ -38,33 +38,21 @@ class CreatePost extends Component {
 
     changeTitle = event => {
         let title = event.currentTarget.value;
-        this.setState(state => ({
-            ...state,
-            title
-        }))
+        this.setState({title})
     }
     changeBody = event => {
         let body = event.currentTarget.value;
-        this.setState(state => ({
-            ...state,
-            body
-        }))
+        this.setState({body})
     }
 
     changeAuthor = event => {
         let author = event.currentTarget.value;
-        this.setState(state => ({
-            ...state,
-            author
-        }))
+        this.setState({author})
     }
     
     changeCategory = event => {
         let category = event.currentTarget.value;
-        this.setState(state => ({
-            ...state,
-            category
-        }))
+        this.setState({category})
     }
     
  newId = () => {

@@ -16,6 +16,10 @@ h4 {
   padding-top: 23px;
 }
 
+.pd-left-38 {
+  padding-left: 38px;
+}
+
 .cl-left{ padding-left: 0; margin-left: 0}
 .title {
   background: rgb(43, 43, 104);
@@ -25,6 +29,12 @@ h4 {
   width: 101.3%;
 }
 
+.ft-rg {
+  clear: both !important;
+  float: unset !important;
+  margin-right: 10px;
+  padding: 3px !important;
+}
 .title-name {
   font-size: 180%;
   font-weight: 400;
@@ -56,6 +66,16 @@ h4 {
   padding-top:30px;
 }
 
+.notFound {
+    color: #2b2b68de;
+    text-align: center;
+    font-size: 300%;
+    padding-top: 30px;
+}
+
+.notFound span {
+  color: cornflowerblue;
+}
 .list-categories li {
   display: block;
   margin-bottom: 30px;
@@ -90,7 +110,9 @@ h4 {
 .post {
   margin-top: 20px;  
 }
-
+.post-category {
+  color: cornflowerblue;
+}
 .post-score {
   text-align: center;
   font-size: 150%;

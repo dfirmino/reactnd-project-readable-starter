@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { incrementVoteComment, decrementVoteComment, deleteComment } from '../actions/index'
 import * as Api from '../utils/Api'
-import moment from 'moment';
+import dateFormatter from '../utils/dateFormatter'
 
 class Comment extends Component {
     
@@ -33,7 +33,7 @@ class Comment extends Component {
                 <div className="detailPost-comments">
                     <div className='comment-description col-md-10 col-sm-10 col-xs-10'>
                         <div className="row">
-                            <span className="comment-author"> {comment.author}  </span> | <span className="comment-date"> {moment(comment.timestamp, "YYYYMMDD").fromNow()} </span>
+                            <span className="comment-author"> {comment.author}  </span> | <span className="comment-date"> {dateFormatter(comment.timestamp) + ' atrás'} </span>
                         </div>
                         <div className="row">
                             <span className="comment-body"> {comment.body} </span>

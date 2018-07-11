@@ -39,7 +39,7 @@ class EditPost extends Component {
             {posts && (<div className="row">
                     <div>
                         <Header />
-                        <div className="col-md-11 col-sm-11">
+                        <div className="col-md-11 col-sm-11 pd-left-38">
                             <div className="row">
                                 <div className="form-group">
                                     <label htmlFor="titulo">Titulo:</label>

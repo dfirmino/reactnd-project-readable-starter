@@ -6,6 +6,7 @@ import * as Api from '../utils/Api'
 import { fillComments, fillPost, newComment, editComment, deletePost } from '../actions/index'
 import Comment from './Comment'
 import Header from './Header'
+import NotFound from './NotFound'
 class DetailPost extends Component {
 
     state = {
@@ -17,26 +18,17 @@ class DetailPost extends Component {
     
     changeBody = event => {
         let body = event.currentTarget.value;
-        this.setState( state => ({
-            ...state,
-            body            
-        }))
+        this.setState({body})
     }
     
     changeAuthor = event => {
         let author = event.currentTarget.value;
-        this.setState(state => ({
-            ...state,
-            author
-        }))
+        this.setState({author})
     }
     
     changeCommentId = event => {
         let commentId = event.currentTarget.value;
-        this.setState(state => ({
-            ...state,
-            commentId
-        }))
+        this.setState({commentId})
     }
     handleEditComment = (author, body, commentId) => {
         let update = true;
@@ -93,7 +85,9 @@ class DetailPost extends Component {
         let { postId } = this.props.match.params
         let post = this.props.posts ? this.props.posts.filter(post => post.id == postId)[0] : null;
         return (
-            <div className="container">
+            <div>
+            {!post && <NotFound/>}
+             {post && <div className="container">
                 <div className="row">
                     <div className="col-md-12 col-sm-12">
                         <Header/>
@@ -138,9 +132,10 @@ class DetailPost extends Component {
                     <div className="col-md-10">
                         <span>Comentários: </span>
                         {comments && comments.filter(comment => !comment.deleted).map(comment => <Comment edit={this.handleEditComment} comment={comment}/>)}
-                    </div>
+                    </div> 
                 </div>
-            </div>
+            </div> }
+        </div>
         )
     }
 }
