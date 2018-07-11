@@ -28,11 +28,10 @@ class CreatePost extends Component {
         let timestamp = + new Date();
         let id = this.newId();
         redirect = true;
-        console.log({ body, author, category, title, id, timestamp })
         Api.createPost({ body, author, category, title, id, timestamp })
         .then(result => {
             newPost({ id, timestamp, author, body, category, title })
-            this.setState({ id:'', timestamp:'', author:'', body:'', category, title:'' }) 
+            this.setState({ id: '', timestamp: '', author: '', body: '', category, title: '', redirect }) 
         })
     } 
 
