@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from "react-router-dom";
 import Nav from './Nav'
 import * as Api from '../utils/Api'
-import { fillComments, fillPost, newComment, editComment, deletePost } from '../actions/index'
+import { fillComments, fillPost, newComment, editComment, deletePost, incrementVotePost, decrementVotePost } from '../actions/index'
 import Comment from './Comment'
 import Header from './Header'
 import NotFound from './NotFound'
@@ -16,20 +16,10 @@ class DetailPost extends Component {
         commentId: null
     }
     
-    changeBody = event => {
-        let body = event.currentTarget.value;
-        this.setState({body})
+    change = e => {
+        this.setState({ [e.currentTarget.name]: e.currentTarget.value })
     }
     
-    changeAuthor = event => {
-        let author = event.currentTarget.value;
-        this.setState({author})
-    }
-    
-    changeCommentId = event => {
-        let commentId = event.currentTarget.value;
-        this.setState({commentId})
-    }
     handleEditComment = (author, body, commentId) => {
         let update = true;
         this.setState({ body, author, commentId, update});
@@ -40,8 +30,23 @@ class DetailPost extends Component {
         let { deletePost } = this.props; 
         Api.deletePost(idPost)
         .then(result => {
-            deletePost(idPost)
+            deletePost(idPost);
+            this.props.history.push('/');
         });
+    }
+    
+    handleIncrement = event => {
+        let { incrementVotePost } = this.props;
+        let id = event.target.dataset.id;
+        incrementVotePost(id);
+        Api.upPost(id);
+    }
+
+    handleDecrement = event => {
+        let { decrementVotePost } = this.props;
+        let id = event.target.dataset.id;
+        decrementVotePost(id);
+        Api.downPost(id);
     }
     handleNewPost = () => {
         let { postId } = this.props.match.params
@@ -83,7 +88,7 @@ class DetailPost extends Component {
     render() {
         let { comments, deletePost } = this.props; 
         let { postId } = this.props.match.params
-        let post = this.props.posts ? this.props.posts.filter(post => post.id == postId)[0] : null;
+        let post = this.props.posts ? this.props.posts.filter(post => post.id === postId)[0] : null;
         return (
             <div>
             {!post && <NotFound/>}
@@ -98,6 +103,11 @@ class DetailPost extends Component {
                                 <span title="remover" className="glyphicon glyphicon-remove-circle" onClick={event => this.handleDeletePost(postId)}></span>
                             </div>
                                 <div className="detailPost">
+                                    <div className="vote">
+                                        <span className='icon-vote glyphicon glyphicon-chevron-up' data-id={post.id} onClick={this.handleIncrement}></span>
+                                            {post.voteScore}
+                                        <span className='icon-vote glyphicon glyphicon-chevron-down' data-id={post.id} onClick={this.handleDecrement}></span>
+                                    </div>
                                     <div className="detailPost--title"> 
                                         <br/>
                                         <span> Titulo:</span> 
@@ -122,16 +132,16 @@ class DetailPost extends Component {
                         Novo:
                     </div>
                     <div className="col-md-offset-3 col-md-5">
-                        <input type="hidden" id="idComment" value={this.state.commentId} onChange={event => { this.changeCommentId(event) }}/>
-                        <input type="text" placeholder="nome" className="form-control" id="author" value={this.state.author} onChange={event => { this.changeAuthor(event) }}/><br/>
-                        <textarea placeholder="Comentário" className="form-control" id="body" value={ this.state.body } onChange={event => {this.changeBody(event)}}></textarea>
+                        <input type="hidden" id="idComment" name="commentId" value={this.state.commentId} onChange={event => { this.change(event) }}/>
+                        <input type="text" name="author" placeholder="nome" className="form-control" id="author" value={this.state.author} onChange={event => { this.change(event) }}/><br/>
+                        <textarea placeholder="Comentário" className="form-control" name="body" id="body" value={ this.state.body } onChange={event => {this.change(event)}}></textarea>
                         <span className="btn btn-send" onClick={this.handleNewPost}>Enviar</span>
                     </div>
                 </div>
                 <div className="row row-comments">
                     <div className="col-md-10">
-                        <span>Comentários: </span>
-                        {comments && comments.filter(comment => !comment.deleted).map(comment => <Comment edit={this.handleEditComment} comment={comment}/>)}
+                        {comments && <span>Comentários ({comments.length}): </span> }
+                        {comments && comments.filter(comment => !comment.deleted).map(comment => <Comment key={comment.id} edit={this.handleEditComment} comment={comment}/>)}
                     </div> 
                 </div>
             </div> }
@@ -146,7 +156,9 @@ function mapDispatchToProps(dispatch) {
         fillPost: (posts) => dispatch(fillPost(posts)),
         newComment: (comment) => dispatch(newComment(comment)),
         editComment: (comment) => dispatch(editComment(comment)),
-        deletePost: (idPost) => dispatch(deletePost(idPost))
+        deletePost: (idPost) => dispatch(deletePost(idPost)),
+        incrementVotePost: (idPost) => dispatch(incrementVotePost(idPost)),
+        decrementVotePost: (idPost) => dispatch(decrementVotePost(idPost)),
     }
 }
 

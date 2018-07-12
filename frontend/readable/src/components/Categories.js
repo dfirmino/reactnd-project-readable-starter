@@ -32,7 +32,7 @@ class Categories extends Component {
                                 <Filter handleChangeFilter={this.handleChangeFilter}/>
                             </div>
                             <div className="row">
-                                <Posts posts={posts.filter(post => post.category === category).slice().sort((a, b) => b[orderBy] - a[orderBy])} />
+                                <Posts posts={posts} />
                             </div>
                         </div>
 
@@ -53,10 +53,11 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-function mapStateToProps({ postReducers }) {
+function mapStateToProps({ postReducers }, ownProps) {
+    const { category } = ownProps.match.params;
+    const { orderBy, posts } = postReducers;
     return {
-        ...postReducers
+        posts: posts && posts.filter(post => post.category === category).sort((a, b) => b[orderBy] - a[orderBy])
     }
 }
-
 export default connect(mapStateToProps,mapDispatchToProps)(Categories);

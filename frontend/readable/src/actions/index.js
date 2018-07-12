@@ -1,4 +1,4 @@
-export const FILL_CATEGORIE = "FILL_CATEGORIE";
+export const FILL_CATEGORY = "FILL_CATEGORY";
 export const FILL_POST = "FILL_POST";
 export const FILL_COMMENTS = "FILL_COMMENTS";
 export const INCREMENT_POST_VOTE = "INCREMENT_POST_VOTE";
@@ -13,7 +13,7 @@ export const DELETE_POST = "DELETE_POST";
 export const DELETE_COMMENT = "DELETE_COMMENT";
 
 export const fillAction = ( categories ) => ({
-    type: FILL_CATEGORIE,
+    type: FILL_CATEGORY,
     categories
 });
 
@@ -25,15 +25,17 @@ export const fillPost = ( posts ) => ({
 
 export const newPost = ({ id, timestamp, author, body, category, title }) => ({
     type: NEW_POST,
-    id, 
-    timestamp, 
-    author, 
-    body, 
-    category, 
-    title,
-    voteScore: 1,
-    deleted: false,
-    commentCount: 0
+    post:{
+        id, 
+        timestamp, 
+        author, 
+        body, 
+        category, 
+        title,
+        voteScore: 1,
+        deleted: false,
+        commentCount: 0
+    }
 })
 
 export const deletePost = (idPost) => ({
@@ -61,15 +63,17 @@ export const fillComments = (comments) => ({
     comments
 })
 
-export const newComment = ({ postId, author, timestamp, body}) => ({
+export const newComment = ({ postId, author, timestamp, body }) => ({
     type: NEW_COMMENT,
-    postId,
-    author,
-    timestamp,
-    body,
-    voteScore:1,
-    parentDeleted: false,
-    deleted: false
+    comment: {
+        postId,
+        author,
+        timestamp,
+        body,
+        voteScore: 1,
+        parentDeleted: false,
+        deleted: false
+    }
 })
 
 export const editComment = ({ commentId, body, timestamp}) => ({

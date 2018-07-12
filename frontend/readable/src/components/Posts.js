@@ -75,8 +75,5 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-function mapStateToProps() {
-    return {}
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Posts)
+export default connect(null, mapDispatchToProps)(Posts)

@@ -28,7 +28,23 @@ h4 {
   line-height: 8vh;
   width: 101.3%;
 }
-
+.vote {
+  float: left;
+  position: relative;
+  top:60px;
+  left: 5%;
+  text-align: center;
+  z-index: 999;
+  display: inline-block;
+}
+.vote span {
+  cursor: pointer;
+  font-size: 160%;
+  color:black !important;
+}
+.vote .title-vote {
+  font-size: 130%;
+}
 .ft-rg {
   clear: both !important;
   float: unset !important;
@@ -156,6 +172,12 @@ h4 {
   color: cornflowerblue;
   font-weight: 600;
   display: block;
+} 
+
+.detailPost-author {
+  clear: both;
+  left: 9px;
+  position: relative;
 } 
 .row-new-comments textarea {
   resize: none;
